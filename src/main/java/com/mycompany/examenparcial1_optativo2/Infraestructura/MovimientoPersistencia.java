@@ -57,7 +57,7 @@ public class MovimientoPersistencia {
                     "canal = '" + movimiento.Canal + "'," +
                     "' Where movimientos.id_movimiento = " + movimiento.id_movimiento);
             conexion.conexionDB().close();
-            return "Los datos de la cuenta fueron modificads correctamente!!!";
+            return "Los datos fueron modificads correctamente!!!";
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -72,6 +72,8 @@ public class MovimientoPersistencia {
 
         while (conexion.getResultadoQuery().next()) {
             Movimientos movimiento = new Movimientos();
+            movimiento.id_movimiento = conexion.getResultadoQuery().getInt("id_movimiento");
+            movimiento.id_cuenta= conexion.getResultadoQuery().getInt("id_cuenta");
             movimiento.FechaMovimiento = conexion.getResultadoQuery().getString("fecha_movimiento");
             movimiento.TipoMovimiento = conexion.getResultadoQuery().getString("tipo_movimiento");
             movimiento.SaldoAnterior = conexion.getResultadoQuery().getString("saldo_anterior");
@@ -99,7 +101,7 @@ public class MovimientoPersistencia {
         if (rowCount > 0) {
             return "El movimiento con ID " + movimiento + " ha sido eliminada correctamente.";
         } else {
-            return "No se encontró ninguna movimiento con ID " + movimiento + ". No se realizó ninguna eliminación.";
+            return "No se encontró ningun movimiento con ID " + movimiento + ". No se realizó ninguna eliminación.";
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);

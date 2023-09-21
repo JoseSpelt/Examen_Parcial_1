@@ -59,10 +59,12 @@ public class ClientePersistencia {
 
         while (conexion.getResultadoQuery().next()) {
             Clientes cliente = new Clientes();
+            cliente.id_cliente = conexion.getResultadoQuery().getInt("id_cliente");
+            cliente.id_persona = conexion.getResultadoQuery().getInt("id_persona");
             cliente.FechaIngreso = conexion.getResultadoQuery().getString("fecha_ingreso");
             cliente.Calificacion = conexion.getResultadoQuery().getString("calificacion");
             cliente.estado = conexion.getResultadoQuery().getString("estado");
-            // Otras propiedades de persona que puedas tener en tu modelo
+
 
             clientes.add(cliente);
         }
@@ -76,14 +78,14 @@ public class ClientePersistencia {
     try {
         conexion.setQuerySQL(conexion.conexionDB().createStatement());
 
-        int rowCount = conexion.getQuerySQL().executeUpdate("DELETE FROM personas WHERE id_persona = " + cliente);
+        int rowCount = conexion.getQuerySQL().executeUpdate("DELETE FROM cliente WHERE id_cliente = " + cliente);
 
         conexion.conexionDB().close();
 
         if (rowCount > 0) {
-            return "La persona con ID " + cliente + " ha sido eliminada correctamente.";
+            return "El cliente con ID " + cliente + " ha sido eliminada correctamente.";
         } else {
-            return "No se encontró ninguna persona con ID " + cliente + ". No se realizó ninguna eliminación.";
+            return "No se encontró ningun cliente con ID " + cliente + ". No se realizó ninguna eliminación.";
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);

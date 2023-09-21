@@ -73,6 +73,8 @@ public class PersonaPersistencia {
 
         while (conexion.getResultadoQuery().next()) {
             Personas persona = new Personas();
+            persona.id_persona = conexion.getResultadoQuery().getInt("id_persona");
+            persona.id_ciudad = conexion.getResultadoQuery().getInt("id_ciudad");
             persona.Nombre = conexion.getResultadoQuery().getString("nombre");
             persona.Apellido = conexion.getResultadoQuery().getString("apellido");
             persona.TipoDocumento = conexion.getResultadoQuery().getString("tipo_documento");

@@ -78,6 +78,8 @@ public class CuentaPersistencia {
 
         while (conexion.getResultadoQuery().next()) {
             Cuentas cuenta = new Cuentas();
+            cuenta.id_cuenta = conexion.getResultadoQuery().getInt("id_cuenta");
+            cuenta.id_cliente = conexion.getResultadoQuery().getInt("id_cliente");
             cuenta.NumeroCuenta = conexion.getResultadoQuery().getString("nro_cuenta");
             cuenta.FechaAlta = conexion.getResultadoQuery().getString("fecha_alta");
             cuenta.TipoCuenta = conexion.getResultadoQuery().getString("tipo_cuenta");
@@ -105,9 +107,9 @@ public class CuentaPersistencia {
         conexion.conexionDB().close();
 
         if (rowCount > 0) {
-            return "La persona con ID " + cuenta + " ha sido eliminada correctamente.";
+            return "La cuenta con ID " + cuenta + " ha sido eliminada correctamente.";
         } else {
-            return "No se encontró ninguna persona con ID " + cuenta + ". No se realizó ninguna eliminación.";
+            return "No se encontró ninguna cuenta con ID " + cuenta + ". No se realizó ninguna eliminación.";
         }
     } catch (SQLException e) {
         throw new RuntimeException(e);

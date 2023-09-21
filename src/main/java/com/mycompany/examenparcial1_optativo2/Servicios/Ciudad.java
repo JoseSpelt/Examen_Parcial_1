@@ -38,7 +38,7 @@ public class Ciudad {
     private boolean validarDatos(Ciudades ciudad) {
         try {
         if(ciudad.NombreCiudad.trim().isEmpty())
-            throw new Exception("El nombre no debe estar vacío");
+            throw new Exception("El nombre de la ciudad no debe estar vacío");
         else if (ciudad.NombreCiudad.trim().length() < 3) {
             throw new Exception("El nombre no tiene la longitud necesaria");
         }

@@ -7,26 +7,26 @@ import java.util.List;
 
 
 public class Cuenta {
-    CuentaPersistencia clienteDB;
+    CuentaPersistencia cuentaDB;
     public Cuenta(String userBD, String passDB, String hostDB, String portDB, String dataBase){
-        clienteDB = new CuentaPersistencia(userBD, passDB, hostDB, portDB, dataBase);
+        cuentaDB = new CuentaPersistencia(userBD, passDB, hostDB, portDB, dataBase);
     }
 
     public String registrarCuenta(Cuentas cuenta){
-           return clienteDB.registrarCuenta(cuenta);
+           return cuentaDB.registrarCuenta(cuenta);
     
     }
     public String modificarCuenta(Cuentas cuenta){
-            return clienteDB.modificarCuenta(cuenta);
+            return cuentaDB.modificarCuenta(cuenta);
     }
 
 
     public List<Cuentas> consultarCuentas(){
-        return  clienteDB.consultarCuentas();
+        return  cuentaDB.consultarCuentas();
     }
     
     public String eliminarCuenta(int cuenta){
-        return clienteDB.eliminarCuenta(cuenta);
+        return cuentaDB.eliminarCuenta(cuenta);
     }
 
 }

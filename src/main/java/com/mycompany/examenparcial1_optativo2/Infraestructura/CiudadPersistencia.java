@@ -59,8 +59,6 @@ public class CiudadPersistencia {
             ciudad.NombreCiudad = conexion.getResultadoQuery().getString("nombre_ciudad");
             ciudad.Departamento = conexion.getResultadoQuery().getString("departamento");
             ciudad.CodigoPostal = conexion.getResultadoQuery().getString("codigo_postal");
-            // Otras propiedades de persona que puedas tener en tu modelo
-
             ciudades.add(ciudad);
         }
     } catch (SQLException e) {
@@ -73,7 +71,7 @@ public class CiudadPersistencia {
     try {
         conexion.setQuerySQL(conexion.conexionDB().createStatement());
 
-        int rowCount = conexion.getQuerySQL().executeUpdate("DELETE FROM ciudad WHERE id_persona = " + ciudad);
+        int rowCount = conexion.getQuerySQL().executeUpdate("DELETE FROM ciudad WHERE id_ciudad = " + ciudad);
 
         conexion.conexionDB().close();
 

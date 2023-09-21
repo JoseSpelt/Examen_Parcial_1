@@ -9,7 +9,7 @@ import java.util.List;
 public class CiudadPrueba {
     public static void main(String[] args) {
         Ciudad ciudad_persistencia = new Ciudad("postgres", "Invocador1998", "localhost", "5432", "Parcial 1");
-        // este bloque de codigo ingresa un registro nuevo en la tabla personas
+        // este bloque de codigo trae los datos de la tabla ciudad
         
         List<Ciudades> listaCiudades = ciudad_persistencia.consultarCiudad();
         for (Ciudades ciudad : listaCiudades) {
