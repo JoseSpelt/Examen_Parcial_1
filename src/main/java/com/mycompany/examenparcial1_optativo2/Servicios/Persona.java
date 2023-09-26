@@ -6,22 +6,23 @@ import com.mycompany.examenparcial1_optativo2.Infraestructura.Personas;
 import java.util.List;
 
 
+
 public class Persona {
   PersonaPersistencia personasDB;
     public Persona(String userBD, String passDB, String hostDB, String portDB, String dataBase){
         personasDB = new PersonaPersistencia(userBD, passDB, hostDB, portDB, dataBase);
     }
 
-    public String registrarPersona(Personas persona){
+    public void registrarPersona(Personas persona){
         if(validarDatos(persona)){
-           return personasDB.registrarPersona(persona);
+           personasDB.registrarPersona(persona);
         }
-        return "Ocurrió algún error, contactese con el Administrador";
+
     }
 
     public String modificarPersona(Personas persona){
         if(validarDatos(persona)){
-            return personasDB.modificarPersona(persona);
+            personasDB.modificarPersona(persona);
         }
         return "Ocurrió algún error, contactese con el Administrador";
     }

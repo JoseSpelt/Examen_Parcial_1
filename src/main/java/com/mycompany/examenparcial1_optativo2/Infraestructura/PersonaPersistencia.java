@@ -4,6 +4,7 @@ package com.mycompany.examenparcial1_optativo2.Infraestructura;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 public class PersonaPersistencia {
@@ -13,7 +14,7 @@ public class PersonaPersistencia {
         conexion = new Conexiones(userBD, passDB, hostDB, portDB, dataBase);
     }
 
-    public String registrarPersona(Personas persona){
+    public void registrarPersona(Personas persona){
 
         try {
             conexion.setQuerySQL(conexion.conexionDB().createStatement());
@@ -38,7 +39,7 @@ public class PersonaPersistencia {
                     persona.Email + "', '" +
                     persona.estado + "')");
             conexion.conexionDB().close();
-            return "La persona " + persona.Nombre + " fue registrado correctamente!!!";
+            JOptionPane.showMessageDialog(null, "Registro Exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
